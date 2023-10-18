@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<!--
+	esTech Master homemade website
+	made by Eric in 2023
+	YouTube channel: youtube.com/@estech321
+	Based on the following template:
+		Editorial by HTML5 UP
+		html5up.net | @ajlkn
+		Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Ultrasonic Security System Resources | esTech</title>
+		<link rel="icon" type="image/x-icon" href="../images/favicon.png">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<script src="https://kit.fontawesome.com/ca0816cf28.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../index.html" class="logo"><strong>esTech</strong> by Eric</a>
+									<ul class="icons">
+										<li><a href="https://youtube.com/@estech321" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+										<li><a href="https://github.com/estech321" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Top Content -->
+								<section>
+									<header class="main">
+										<h1><grey><a href="resources.html">Resources</a> / </grey>Ultrasonic Security System</h1>
+									</header>
+
+									<p>Detects if objects are near an ultrasonic sensor and beeps. Also displays distance through the serial monitor.</p>
+									<p><strong>Details:</strong><br>Companion video: <a href="https://youtu.be/1_k3uJOeSTo">Make an Ultrasonic Security System with Arduino!</a><br>Language: Arduino C</p>
+									<p><strong>Copyright Attribution:</strong><br>Code from Anonymous User's <a href="https://projecthub.arduino.cc/Krepak/ultrasonic-security-system-a6ea3a#:~:text=Code%20needs%20some%20slight%20amendments%20as%20below">comment</a> from <a href="https://projecthub.arduino.cc/Krepak">Krepak</a>'s tutorial <a href="https://projecthub.arduino.cc/Krepak/a6ea3ad5-fd23-49c9-a96c-5e6fcf97f2cc">Ultrasonic Security System</a> on the <a href="https://projecthub.arduino.cc/">Arduino Project Hub</a>. The comment begins by saying, "Code needs some slight amendments as below." I have modified this code by changing the values of the variables to match the pinout diagram used in Krepak's tutorial. This code is licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
+									<a href="https://github.com/estech321/Video-Resources/blob/main/Ultrasonic_Sensor_Alarm/Ultrasonic_Sensor_Alarm.ino" class="button primary"><i class="fa-brands fa-github"></i> View/Download on Github</a>
+									<br>
+									<br>
+									<pre><code>
+//Copyright Notice: Code from Anonymous User's comment from Krepak's tutorial Ultrasonic Security System on the Arduino Project Hub. 
+//The comment begins by saying, "Code needs some slight amendments as below." 
+//I have modified this code by changing the values of the variables to match the pinout diagram used in Krepak's tutorial. 
+//This code is licensed under CC BY-SA 3.0.
+
+//This program detects when an object is close to an ultrasonic sensor. 
+//It buzzes when an object is very close, and lights the LEDs in different ways depending on the distance.
+//This program is used in the following video: https://youtu.be/9YJtSkO6SYA
+//Comments and code shared by esTech (https://youtube.com/@estech321)
+//and on the website https://estech321.github.io 
+
+#define trigPin 7
+#define echoPin 6
+#define LEDlampRed 9
+#define LEDlampYellow 10
+#define LEDlampGreen 11
+#define soundbuzzer 3
+int sound = 500;
+void setup() {
+Serial.begin (9600);
+pinMode(trigPin, OUTPUT);
+pinMode(echoPin, INPUT);
+pinMode(LEDlampRed, OUTPUT);
+pinMode(LEDlampYellow, OUTPUT);
+pinMode(LEDlampGreen, OUTPUT);
+pinMode(soundbuzzer, OUTPUT);
+}
+
+void loop() {
+long durationindigit, distanceincm;
+digitalWrite(trigPin, LOW);
+delayMicroseconds(2);
+digitalWrite(trigPin, HIGH);
+delayMicroseconds(10);
+digitalWrite(trigPin, LOW);
+durationindigit = pulseIn(echoPin, HIGH);
+distanceincm = (durationindigit/5) / 29.1;
+
+if (distanceincm < 50) {
+digitalWrite(LEDlampGreen, HIGH);
+}
+
+else {
+digitalWrite(LEDlampGreen, LOW);
+}
+
+if (distanceincm < 20) {
+digitalWrite(LEDlampYellow, HIGH);
+}
+
+else {
+
+digitalWrite(LEDlampYellow,LOW);
+
+}
+if (distanceincm < 5) {
+digitalWrite(LEDlampRed, HIGH);
+sound = 1000;
+}
+else {
+digitalWrite(LEDlampRed,LOW);
+}
+
+if (distanceincm > 5 || distanceincm <= 0){
+Serial.println("Outside the permissible range of distances");
+noTone(soundbuzzer);
+}
+
+else {
+Serial.print(distanceincm);
+Serial.println(" cm");
+tone(soundbuzzer, sound);
+}
+
+delay(300);
+}
+									</code></pre>
+
+								</section>
+								
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+				<div id="sidebar">
+					<div class="inner">
+
+						<!-- Search -->
+							<section id="search" class="alt">
+								<form method="post" action="#">
+									<input type="text" name="query" id="query" placeholder="Search" />
+								</form>
+							</section>
+
+						<!-- Menu -->
+						<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="../index.html">Home</a></li>
+								<li><a href="../tutorials/tutorials.html">Tutorials</a></li>
+								<li><a href="../resources/resources.html">Resources</a></li>
+								<li><a href="../blog/blog.html">Blog</a></li>
+								<li><a href="../showcases/showcases.html">Project Showcases</a></li>
+							</ul>
+						</nav>
+
+					<!-- Sidebar Footer -->
+						<footer id="footer">
+							<p xmlns:cc="https://creativecommons.org/ns#" xmlns:dct="https://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://estech321.github.io">This website (excluding the design)</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" >CC BY-NC-SA 4.0</a></p>
+							<p>Design by <a href="https://html5up.net" target="_blank">HTML5 Up</a></p>
+							
+						</footer>
+
+				</div>
+			</div>
+
+	</div>
+
+<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+</html>

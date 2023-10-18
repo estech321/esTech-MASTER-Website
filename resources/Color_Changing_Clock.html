@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<!--
+	esTech Master homemade website
+	made by Eric in 2023
+	YouTube channel: youtube.com/@estech321
+	Based on the following template:
+		Editorial by HTML5 UP
+		html5up.net | @ajlkn
+		Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Color-Changing Clock Resources | esTech</title>
+		<link rel="icon" type="image/x-icon" href="../images/favicon.png">
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<script src="https://kit.fontawesome.com/ca0816cf28.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="../index.html" class="logo"><strong>esTech</strong> by Eric</a>
+									<ul class="icons">
+										<li><a href="https://youtube.com/@estech321" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+										<li><a href="https://github.com/estech321" class="icon brands fa-github"><span class="label">YouTube</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Top Content -->
+								<section>
+									<header class="main">
+										<h1><grey><a href="resources.html">Resources</a> / </grey>DIY Color-Changing Clock</h1>
+									</header>
+
+									<p>This program fades RGB LED lights different colors. It is suitable for use with LED strips, SMDs or standard 5mms.</p>
+									<p><strong>Details:</strong><br>Companion video: <a href="https://youtu.be/9YJtSkO6SYA">DIY Color-Changing Clock!</a><br>Language: Arduino C</p>
+									<p><strong>Copyright Attribution:</strong><br>I did not write this code. It is from <a href="https://www.instructables.com/member/cyragia/">Cyragia's</a> Instructables tutorial, <a href="https://www.instructables.com/Fading-RGB-LED-Arduino/">Fading RGB LED (Arduino)</a>. This version has not been modified from the original.
+									This code is licenced under  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p>
+									<a href="https://github.com/estech321/Video-Resources/blob/main/RGB_LED_Fade/RGB_LED_Fade.ino" class="button primary"><i class="fa-brands fa-github"></i> View/Download on Github</a>
+									<br>
+									<br>
+									<pre><code>
+//Copyright Attribution: Code from Cyragia's Instructables tutorial, Fading RGB LED (Arduino). 
+//This version has not been modified from the original.
+//This code is licenced under CC BY-NC-SA 4.0
+
+//This program fades RGB LED lights different colors. 
+//It is suitable for use with LED strips, SMDs or standard 5mms.
+//This program is used in the following video: https://youtu.be/9YJtSkO6SYA
+//Comments and code shared by esTech (youtube.com/@estech321)
+//and on the website estech321.github.io
+
+#define GREEN 3
+#define BLUE 5
+#define RED 6
+#define delayTime 20
+
+void setup() {
+
+  pinMode(GREEN, OUTPUT);
+  pinMode(BLUE, OUTPUT);
+  pinMode(RED, OUTPUT);
+  digitalWrite(GREEN, HIGH);
+  digitalWrite(BLUE, HIGH);
+  digitalWrite(RED, HIGH);
+}
+
+int redVal;
+int blueVal;
+int greenVal;
+
+void loop() {
+
+  int redVal = 255;
+  int blueVal = 0;
+  int greenVal = 0;
+  for( int i = 0 ; i < 255 ; i += 1 ){
+	greenVal += 1;
+	redVal -= 1;
+	analogWrite( GREEN, 255 - greenVal );
+	analogWrite( RED, 255 - redVal );
+
+	delay( delayTime );
+  }
+
+  redVal = 0;
+  blueVal = 0;
+  greenVal = 255;
+  for( int i = 0 ; i < 255 ; i += 1 ){
+	blueVal += 1;
+	greenVal -= 1;
+	analogWrite( BLUE, 255 - blueVal );
+	analogWrite( GREEN, 255 - greenVal );
+
+	delay( delayTime );
+  }
+
+  redVal = 0;
+  blueVal = 255;
+  greenVal = 0;
+  for( int i = 0 ; i < 255 ; i += 1 ){
+	redVal += 1;
+	blueVal -= 1;
+	analogWrite( RED, 255 - redVal );
+	analogWrite( BLUE, 255 - blueVal );
+
+	delay( delayTime );
+  }
+}
+									</code></pre>
+
+								</section>
+								
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+				<div id="sidebar">
+					<div class="inner">
+
+						<!-- Search -->
+							<section id="search" class="alt">
+								<form method="post" action="#">
+									<input type="text" name="query" id="query" placeholder="Search" />
+								</form>
+							</section>
+
+						<!-- Menu -->
+						<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="../index.html">Home</a></li>
+								<li><a href="../tutorials/tutorials.html">Tutorials</a></li>
+								<li><a href="../resources/resources.html">Resources</a></li>
+								<li><a href="../blog/blog.html">Blog</a></li>
+								<li><a href="../showcases/showcases.html">Project Showcases</a></li>
+							</ul>
+						</nav>
+
+					<!-- Sidebar Footer -->
+						<footer id="footer">
+							<p xmlns:cc="https://creativecommons.org/ns#" xmlns:dct="https://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://estech321.github.io">This website (excluding the design)</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" >CC BY-NC-SA 4.0</a></p>
+							<p>Design by <a href="https://html5up.net" target="_blank">HTML5 Up</a></p>
+							
+						</footer>
+
+				</div>
+			</div>
+
+	</div>
+
+<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+</html>

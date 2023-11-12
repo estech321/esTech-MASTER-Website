@@ -1220,7 +1220,30 @@ input[type="radio"] + label:before {
     font-weight: 900; }
   .icon.brands:before {
     font-family: 'Font Awesome 5 Brands'; }
+/*Gallery*/
+div.gallery {
+  margin: 5px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+  filter: drop-shadow(2px 2px 2px rgba(195, 195, 195, 0.536));
+}
 
+div.gallery:hover {
+  border-radius: 25px;
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
 /* Image */
 .image {
   border-radius: 0.375em;
@@ -1257,6 +1280,12 @@ input[type="radio"] + label:before {
   .image.tutorial{
     width: auto;
   }
+  .appicons {
+    width: 10%;
+    height: auto;
+    filter: drop-shadow(5px 5px 5px rgb(194, 194, 194));
+  }
+
 
 a.image {
   overflow: hidden; }
